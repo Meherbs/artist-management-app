@@ -1,12 +1,12 @@
 
 ###> symfony/framework-bundle ###
-/.env.local
-/.env.local.php
-/.env.*.local
-/config/secrets/prod/prod.decrypt.private.php
-/public/bundles/
-/var/
-/vendor/
+/backend/.env.local
+/backend/.env.local.php
+/backend/.env.*.local
+/backend/config/secrets/prod/prod.decrypt.private.php
+/backend/public/bundles/
+/backend/var/
+/backend/vendor/
 ###< symfony/framework-bundle ###
 
 # Created by https://www.toptal.com/developers/gitignore/api/phpstorm+all,symfony,phpunit
@@ -17,30 +17,30 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
+/backend/.idea/**/workspace.xml
+/backend/.idea/**/tasks.xml
+/backend/.idea/**/usage.statistics.xml
+/backend/.idea/**/dictionaries
+/backend/.idea/**/shelf
 
 # AWS User-specific
-.idea/**/aws.xml
+/backend/.idea/**/aws.xml
 
 # Generated files
-.idea/**/contentModel.xml
+/backend/.idea/**/contentModel.xml
 
 # Sensitive or high-churn files
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
+/backend/.idea/**/dataSources/
+/backend/.idea/**/dataSources.ids
+/backend/.idea/**/dataSources.local.xml
+/backend/.idea/**/sqlDataSources.xml
+/backend/.idea/**/dynamic.xml
+/backend/.idea/**/uiDesigner.xml
+/backend/.idea/**/dbnavigator.xml
 
 # Gradle
-.idea/**/gradle.xml
-.idea/**/libraries
+/backend/.idea/**/gradle.xml
+/backend/.idea/**/libraries
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
@@ -56,19 +56,19 @@
 # *.ipr
 
 # CMake
-cmake-build-*/
+/backend/cmake-build-*/
 
 # Mongo Explorer plugin
-.idea/**/mongoSettings.xml
+/backend/.idea/**/mongoSettings.xml
 
 # File-based project format
-*.iws
+/backend/*.iws
 
 # IntelliJ
-out/
+/backend/out/
 
 # mpeltonen/sbt-idea plugin
-.idea_modules/
+/backend/.idea_modules/
 
 # JIRA plugin
 atlassian-ide-plugin.xml
@@ -83,7 +83,7 @@ crashlytics-build.properties
 fabric.properties
 
 # Editor-based Rest Client
-.idea/httpRequests
+/backend/.idea/httpRequests
 
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
@@ -92,86 +92,86 @@ fabric.properties
 # Ignores the whole .idea folder and all .iml files
 # See https://github.com/joeblau/gitignore.io/issues/186 and https://github.com/joeblau/gitignore.io/issues/360
 
-.idea/
+/backend/.idea/
 
 # Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-249601023
 
 *.iml
-modules.xml
-.idea/misc.xml
+/backend/modules.xml
+/backend/.idea/misc.xml
 *.ipr
 
 # Sonarlint plugin
-.idea/sonarlint
+/backend/.idea/sonarlint
 
 ### PHPUnit ###
 # Covers PHPUnit
 # Reference: https://phpunit.de/
 
 # Generated files
-.phpunit.result.cache
-.phpunit.cache
+/backend/.phpunit.result.cache
+/backend/.phpunit.cache
 
 # PHPUnit
-/app/phpunit.xml
-/phpunit.xml
+/backend/app/phpunit.xml
+/backend/phpunit.xml
 
 # Build data
-/build/
+/backend/build/
 
 ### Symfony ###
 # Cache and logs (Symfony2)
-/app/cache/*
-/app/logs/*
-!app/cache/.gitkeep
-!app/logs/.gitkeep
+/backend/app/cache/*
+/backend/app/logs/*
+/backend/!app/cache/.gitkeep
+/backend/!app/logs/.gitkeep
 
 # Email spool folder
-/app/spool/*
+/backend/app/spool/*
 
 # Cache, session files and logs (Symfony3)
-/var/cache/*
-/var/logs/*
-/var/sessions/*
-!var/cache/.gitkeep
-!var/logs/.gitkeep
-!var/sessions/.gitkeep
+/backend/var/cache/*
+/backend/var/logs/*
+/backend/var/sessions/*
+/backend/!var/cache/.gitkeep
+/backend/!var/logs/.gitkeep
+/backend/!var/sessions/.gitkeep
 
 # Logs (Symfony4)
-/var/log/*
-!var/log/.gitkeep
+/backend/var/log/*
+/backend/!var/log/.gitkeep
 
 # Parameters
-/app/config/parameters.yml
-/app/config/parameters.ini
+/backend/app/config/parameters.yml
+/backend/app/config/parameters.ini
 
 # Managed by Composer
-/app/bootstrap.php.cache
-/var/bootstrap.php.cache
-/bin/*
-!bin/console
-!bin/symfony_requirements
-/vendor/
+/backend/app/bootstrap.php.cache
+/backend/var/bootstrap.php.cache
+/backend/bin/*
+/backend/!bin/console
+/backend/!bin/symfony_requirements
+/backend/vendor/
 
 # Assets and user uploads
-/web/bundles/
-/web/uploads/
+/backend/web/bundles/
+/backend/web/uploads/
 
 # PHPUnit
 
 # Build data
 
 # Composer PHAR
-/composer.phar
+/backend/composer.phar
 
 # Backup entities generated with doctrine:generate:entities command
 **/Entity/*~
 
 # Embedded web-server pid file
-/.web-server-pid
+/backend/.web-server-pid
 
 ### Symfony Patch ###
-/web/css/
-/web/js/
+/backend/web/css/
+/backend/web/js/
 
 # End of https://www.toptal.com/developers/gitignore/api/phpstorm+all,symfony,phpunit
