@@ -1,0 +1,68 @@
+<?php //App%255CEntity%255CUser
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
+        clone ($p['Doctrine\\ORM\\Mapping\\HasLifecycleCallbacks'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\HasLifecycleCallbacks')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Table'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Table')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'collectionOperations' => [
+                [
+                    'get' => [],
+                    'post' => [],
+                    'create_user' => [
+                        'method' => 'POST',
+                        'path' => '/users/create',
+                        'controller' => 'App\\Controller\\Api\\CreateUser',
+                    ],
+                ],
+            ],
+            'itemOperations' => [
+                [
+                    'get' => [],
+                    'patch' => [],
+                    'put' => [],
+                    'delete' => [],
+                ],
+            ],
+            'attributes' => [
+                [
+                    'formats' => [
+                        'json',
+                    ],
+                    'normalization_context' => [
+                        'groups' => [
+                            'user_read',
+                            'user_details_read',
+                        ],
+                        'enable_max_depth' => true,
+                    ],
+                    'denormalization_context' => [
+                        'groups' => [
+                            'user_read',
+                            'user_details_read',
+                        ],
+                        'enable_max_depth' => true,
+                    ],
+                ],
+            ],
+            'repositoryClass' => [
+                2 => 'App\\Repository\\UserRepository',
+            ],
+            'name' => [
+                3 => '`user`',
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+        $o[2],
+        $o[3],
+    ],
+    []
+); }];

@@ -1,0 +1,17 @@
+<div [id]="id" [@openClose]="opened ? 'open' : 'close'" class="panel-container" 
+  [style.position]="position" 
+  [style.zIndex]="zIndex">
+  <div class="middle row">
+    <div [@animateChild]="opened ? 'open' : 'close'" class="panel z-depth-2" [style.width]="width">
+      <div class="panel-header">
+        <ng-content select=".header"></ng-content>
+      </div>
+      <div class="panel-content">
+        <ng-content select=".content"></ng-content>
+      </div>
+      <div class="panel-footer">
+        <ng-content select=".footer"></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="pagetitle">
+    <h1>Celebrity</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item active">Celebrity</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section dashboard">
+    <div class="row" style="height: calc(100vh - 220px);">
+
+        <div class="manager-view" style="height: inherit;">
+            <div class="left-side" style="height: inherit;">
+                <mat-nav-list>
+                    <a mat-list-item matTooltip="Créer" [matTooltipPosition]="'after'" [routerLink]="['new']">
+                        <mat-icon mat-list-icon>add_circle_outline</mat-icon>
+                    </a>
+                    <a mat-list-item matTooltip="Modifier" [matTooltipPosition]="'after'" (click)="edit()">
+                        <mat-icon mat-list-icon>edit</mat-icon>
+                    </a>
+                    <a mat-list-item matTooltip="Supprimer" [matTooltipPosition]="'after'" (click)="delete()">
+                        <mat-icon mat-list-icon>delete_forever</mat-icon>
+                    </a>
+                    <!--a mat-list-item matTooltip="Reporter échéance" [matTooltipPosition]="'after'" 
+                        (click)="reportEcheance()">
+                        <mat-icon mat-list-icon>event</mat-icon>
+                    </a-->
+                </mat-nav-list>
+            </div>
+
+            <div class="right-side" style="height: inherit;">
+                <div style="height: calc(100vh - 315px);">
+                    <div class="page-title">Celebrities list</div>
+                    <app-grid-table #table [columns]="columns" [configuration]="gridConfig" style="height: inherit;"
+                        [data]="list">
+                    </app-grid-table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>

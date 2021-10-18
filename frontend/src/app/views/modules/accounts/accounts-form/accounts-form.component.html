@@ -1,0 +1,64 @@
+<div class="form-container">
+    <form [formGroup]="form" (ngSubmit)="save()">
+        <div class="row">
+            <div class="col col-12 col-md-12">
+                <h2>Compte utilisateur [{{ account ? 'modification' : 'création' }}]</h2>
+            </div>
+
+            <div class="col col-12 col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Nom d'utilisateur</mat-label>
+                    <input matInput formControlName="username" />
+                    <mat-error>
+                        <div *ngIf="form.get('username').getError('required')">Le nom d'utilisateur est obligatoire!
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="account == null" class="col col-12 col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Mot de passe</mat-label>
+                    <input type="password" matInput formControlName="password" />
+                    <mat-error>
+                        <div *ngIf="form.get('password').getError('required')">Le mot de passe est obligatoire!
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col col-12 col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput formControlName="email" />
+                    <mat-error>
+                        <div *ngIf="form.get('email').getError('required')">L'émail est obligatoire!
+                        </div>
+                    </mat-error>
+                    <mat-error>
+                        <div *ngIf="form.get('email').getError('pattern')">Veuillez saisir un email valide!
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col col-12 col-md-6">
+                <mat-form-field appearance="fill">
+                    <mat-label>Role</mat-label>
+                    <mat-select formControlName="roles" name="roles">
+                        <mat-option *ngFor="let role of rolesList" [value]="role.key">
+                            {{role.value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="col s12 col-sm-12 col-md-12 buttons-row">
+                <button type="submit" mat-raised-button class="btn-primary">
+                    <mat-icon>save</mat-icon>
+                    Enregistrer
+                </button>
+                <button mat-raised-button (click)="cancel()">Annuler</button>
+            </div>
+        </div>
+    </form>
+</div>

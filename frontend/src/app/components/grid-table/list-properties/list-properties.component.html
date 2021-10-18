@@ -1,0 +1,17 @@
+<div class="list-properties-container">
+  <div class="columns-container" *ngIf="configuredColumns.length == 0">
+    <h5>La configuration n'est pas activée pour cette liste!</h5>
+    <button (click)="close()">Quitter</button>
+  </div>
+  <div class="columns-container" *ngIf="configuredColumns.length > 0">
+    <h5>Configurer les colonnes à afficher</h5>
+    <grid-columns-selector #columnsSelector 
+      [columns]="predefinedColumns"
+      [selectedColumns]="configuredColumns">
+    </grid-columns-selector>
+    <div class="buttons">
+      <button (click)="validateConfiguration()" [disabled]="columnsSelector.selectedColumns.length == 0">Valider</button>
+      <button (click)="close()">Quitter</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<?php //App%255CEntity%255CLog%2524user
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+        clone ($p['Doctrine\\ORM\\Mapping\\ManyToOne'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToOne')),
+    ],
+    null,
+    [
+        'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+            'groups' => [
+                [
+                    'logs_read',
+                    'logs_details_read',
+                ],
+            ],
+        ],
+        'stdClass' => [
+            'targetEntity' => [
+                1 => 'App\\Entity\\User',
+            ],
+            'inversedBy' => [
+                1 => 'logs',
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+    ],
+    []
+); }];

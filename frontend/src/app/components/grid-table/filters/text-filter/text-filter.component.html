@@ -1,0 +1,21 @@
+<div class="container">
+    <div>
+        <input #search type="text" (keyup)="searchInElements($event)" placeholder="Recherche...">
+    </div>
+    <div class="all-checkbox-container">
+        <label>
+            <input [checked]="selected.length == filtered.length" type="checkbox" #allCheckbox (change)="elementChecked(allCheckbox.checked, 'All')"> 
+            Tout sélectionner
+        </label>
+    </div>
+    <div class="elements">
+        <label *ngFor="let element of filtered">
+            <input #checkbox type="checkbox" [checked]="selected.includes(element)" [value]="element" (change)="elementChecked(checkbox.checked, element)"> 
+            {{ element }}
+        </label>
+    </div>
+    <div>
+        <button (click)="cancel()">Vider</button>
+        <button (click)="filter()">Filtrer</button>
+    </div>
+</div>

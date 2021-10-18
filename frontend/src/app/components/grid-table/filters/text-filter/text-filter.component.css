@@ -1,0 +1,36 @@
+.container{
+    width: 200px;
+    padding: 5px;
+}
+
+input{
+    width: 100%;
+}
+.all-checkbox-container{
+    margin-top: 5px;
+}
+
+.elements{
+    border: solid 1px #ababab;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 150px;
+    overflow: auto;
+}
+
+input[type=checkbox]{
+    opacity: 1;
+    position: unset;
+    width: auto;
+    vertical-align: middle;
+}
+
+label{
+    color: #8d8d8d;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+button{
+    margin-right: 5px;
+}

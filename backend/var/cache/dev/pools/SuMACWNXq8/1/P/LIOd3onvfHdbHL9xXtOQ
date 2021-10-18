@@ -1,0 +1,3 @@
+<?php //App%255CEntity%255CConnections%2523getIsAgent
+
+return [PHP_INT_MAX, []];

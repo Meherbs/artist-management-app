@@ -1,0 +1,10 @@
+<div class="excel-generator-container">
+  <div class="columns-container">
+    <h5>Sélectionner les colonnes à exporter</h5>
+    <grid-columns-selector #columnsSelector [columns]="columns"></grid-columns-selector>
+    <div class="buttons">
+      <button (click)="exportData()" [disabled]="columnsSelector.selectedColumns.length == 0">Exporter</button>
+      <button (click)="close()">Quitter</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+.excel-generator-container{
+    position: absolute;
+    top: 0;
+    background: #00000038;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.columns-container{
+    background: white;
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    border-radius: 3px;
+}
+
+.buttons{
+    float: right;
+}
+
+.buttons button{
+    border: solid 1px #bbbbbb;
+    background: transparent;
+    border-radius: 2px;
+    margin-top: 10px;
+    cursor: pointer;
+    padding: 5px;
+    margin-right: 5px;
+}

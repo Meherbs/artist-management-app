@@ -1,0 +1,29 @@
+<div>
+  <table>
+    <tr>
+      <td width="45%">
+        <div class="columns-list">
+          <div class="column-item" *ngFor="let column of columns"
+            (click)="addColumn(column)">
+            {{column.name}}
+          </div>
+        </div>
+      </td>
+      <td width="10%">
+        <div><button class="action-button" (click)="addAllColumns()">>></button></div>
+        <div><button class="action-button" (click)="removeAllColumns()"><<</button></div>
+      </td>
+      <td width="45%">
+        <div class="columns-list" 
+          cdkDropList 
+          (cdkDropListDropped)="drop($event)">
+          <div class="column-item" *ngFor="let column of selectedColumns; let i = index;" 
+            cdkDrag
+            (click)="removeColumn(i)">
+            {{column.name}}
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

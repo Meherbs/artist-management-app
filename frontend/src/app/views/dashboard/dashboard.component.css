@@ -1,0 +1,13 @@
+.scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #aab7cf transparent;
+}
+
+.scroll-thin::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    background-color: #fff;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+    background-color: #aab7cf;
+}

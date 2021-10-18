@@ -1,0 +1,26 @@
+<div class="printing-manager-container">
+  <div class="columns-container">
+    <h5>Sélectionner les colonnes à imprimer</h5>
+    <input type="text" placeholder="Titre de document" class="document-title" [value]="tableName" (input)="tableName = $any($event.target).value">
+    <grid-columns-selector #columnsSelector [columns]="columns"></grid-columns-selector>
+    <div class="buttons">
+      <button (click)="printData()" [disabled]="columnsSelector.selectedColumns.length == 0">Imprimer</button>
+      <button (click)="close()">Quitter</button>
+    </div>
+
+    <div id="print-zone">
+      <h4 class="title-to-print">{{ tableName }}</h4>
+      <h6>Edité le {{ today|date:'dd/MM/y' }}</h6>
+      <table>
+        <thead>
+          <th *ngFor="let column of columnsSelector.selectedColumns">{{ column.name }}</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of dataToPrint">
+            <td *ngFor="let column of columnsSelector.selectedColumns">{{ data[column.name] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div> 
+</div>

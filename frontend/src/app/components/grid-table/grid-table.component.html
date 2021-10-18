@@ -1,0 +1,70 @@
+<div class="grid-table-container">
+    <div class="toolbar">
+        <ul class="toolbar-elements">
+            <li>
+                <button 
+                    class="toolbar-action columns-settings"
+                    title="Propriétés de la liste"
+                    (click)="openListProperties()">
+                </button>
+                <button 
+                    class="toolbar-action print"
+                    title="Imprimer la liste affichée"
+                    (click)="openPrintingManager()">
+                </button>
+                <button 
+                    class="toolbar-action export-excel"
+                    title="Export excel"
+                    (click)="openExportExcelManager()">
+                </button>
+                <button 
+                    class="toolbar-action clear-filters" 
+                    title="{{(configuration.dictionnary.clearAllFilters) ? configuration.dictionnary.clearAllFilters : 'Clear all filters'}}" 
+                    (click)="clearAllFilters()">
+                </button>
+            </li>
+            <li>
+                <div>
+                    <input 
+                        #quickFilterInput
+                        type="text" 
+                        class="browser-default toolbar-search" 
+                        placeholder="{{(configuration.dictionnary.quickFilter) ? configuration.dictionnary.quickFilter : 'Quick filter...'}}"
+                        (keyup)="quickFilter($event)"
+                    >
+                </div>
+            </li>
+            <li>
+                <label [innerHTML]="elementsCountText"></label>
+            </li>
+        </ul>
+    </div>
+    <ag-grid-angular 
+        #grid
+        [style.height]="configuration.height" 
+        class="ag-theme-balham"
+        [rowData]="data" 
+        [columnDefs]="agGridColumns"
+        [suppressMovableColumns]="!configuration.movableColumns"
+        [suppressCellSelection]="true"
+        [animateRows]="true"
+        [floatingFilter]="false"
+        [rowSelection]="configuration.rowSelection"
+        [rowMultiSelectWithClick]="false"
+        (selectionChanged)="onSelectionChanged($event)"
+        [localeText]="configuration.dictionnary"
+        (gridReady)="onGridReady($event)"
+        (modelUpdated)="onModelUpdated($event)"
+        [frameworkComponents]="frameworkComponents"
+        (columnResized)="onColumnResize($event)"
+        >
+    </ag-grid-angular>
+
+    <ng-template #dynamicContent></ng-template>
+
+    <!-- <grid-excel-generator 
+        [columns]="columns" 
+        [gridApi]="grid.api"
+        [tableName]="configuration.name">
+    </grid-excel-generator> -->
+</div>
