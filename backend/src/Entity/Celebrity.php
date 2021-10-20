@@ -13,8 +13,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *     formats={"json"},
- *     normalizationContext={"groups"={"celebrity_read", "celebrity_details_read"},"enable_max_depth"=true},
- *     denormalizationContext={"groups"={"celebrity_read", "celebrity_details_read"},"enable_max_depth"=true},
+ *     normalizationContext={"groups"={"connections_read", "connections_details_read", "celebrity_read", "celebrity_details_read"},"enable_max_depth"=true},
+ *     denormalizationContext={"groups"={"connections_read", "connections_details_read", "celebrity_read", "celebrity_details_read"},"enable_max_depth"=true},
  *     collectionOperations={
  *      "get"={},
  *      "post"={}
@@ -60,7 +60,6 @@ class Celebrity
     private $bio;
 
     /**
-     * @Groups({"celebrity_read", "celebrity_details_read"})
      * @ORM\OneToMany(targetEntity=Connections::class, mappedBy="celebrity", orphanRemoval=true)
      */
     private $representatives;

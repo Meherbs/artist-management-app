@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LogsService } from 'src/app/services/app-services/logs.service';
 import { ILogs } from 'src/app/Models/logs';
+import { StatsService } from 'src/app/services/app-services/stats.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +12,16 @@ export class DashboardComponent implements OnInit {
   logsList: ILogs[];
   now = new Date();
 
-  constructor(private _logsService: LogsService) {
+  stats = {
+    celebrity: 0,
+    representative: 0,
+    accounts: 0,
+    agents: 0,
+    publicists: 0,
+    managers: 0
+  }
+
+  constructor(private _logsService: LogsService, private _statsService: StatsService) {
     this.logsList = [];
     setInterval(() => {
       this.now = new Date();
@@ -116,7 +126,19 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  loadStats() {
+    this._statsService.getAll().subscribe((data: any) => {
+      this.stats.celebrity = data.celebrity;
+      this.stats.representative = data.representative;
+      this.stats.accounts = data.accounts;
+      this.stats.agents = data.agents;
+      this.stats.managers = data.managers;
+      this.stats.publicists = data.publicist;
+    });
+  }
+
   ngOnInit(): void {
+    this.loadStats();
     this.loadLogsData();
   }
 

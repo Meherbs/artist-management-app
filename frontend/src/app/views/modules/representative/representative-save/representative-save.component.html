@@ -1,1 +1,20 @@
-<p>representative-save works!</p>
+<div class="manager-view" style="height: inherit;">
+    <div class="left-side" style="height: inherit; margin: -19px;">
+        <mat-nav-list>
+            <a mat-list-item matTooltip="Back to list" [matTooltipPosition]="'after'"
+                [routerLink]="'/app/representatives'">
+                <mat-icon mat-list-icon>arrow_back</mat-icon>
+            </a>
+        </mat-nav-list>
+    </div>
+
+    <div class="right-side">
+        <mat-card style="height: calc(100vh - 172px); overflow-y: auto;">
+            <mat-card-content>
+                <app-representative-form [representative]="_representative" (onSave)="navigateToList($event)"
+                    (onCancellation)="navigateToList()">
+                </app-representative-form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

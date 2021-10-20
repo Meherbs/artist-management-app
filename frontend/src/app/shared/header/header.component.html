@@ -1,7 +1,8 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center">
+        <a href="javascript:void(0)" routerLink="/home/dashboard" routerLinkActive="active"
+            class="logo d-flex align-items-center">
             <img
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAABmJLR0QA/wD/AP+gvaeTAAAD40lEQVRYhd3XW4iVVRQH8N+kaSllkcVoVmTDmGll0k1EMyi7YFfLiggqIgwhCqKgfIgQuuBDClH6Yj300NVQK5uumlDgZFNhqWVWZklemmY0U6zpYa0zc+Z4zsyZyQbqDx/722vv7+z/XvfD/wRHYDY+xrd4Dw+mvM8xFotwHc7HTXgbP2FMX5EYikYMrLB+H7biqL4g8zhezvcBJWuF+et4pC/IfIVLMRq7MVeYbG7OR+NKrO4LMi2oF1poyUP359iS8tOxvcy3/TAVd4oLVTJ11diIKfm+FHdjUI5LU34ZPiv5bjy+QBvW5vhj0W85pBdkGkTkFN6n4vccG1J+M94t+mYElmEDNmFcEmvEKzgBanpBZiTW4FbhP40Yhp9xNs7CMzhNhDnMx3EiHx2Nu/CYyEl7ReTd3gsu4HK0YjK2YE6Ok4vkNSLyFiTR97FO+NYCrEpyb+Jremcm4pYDsALD8VCOK1JeL5zz/iTSip34Dc1JYid24RcRAO1kPhEOVfrMrUDmXmGmmjLPHbinaO+TeB6DsRybhcY26vCrBuifk+GYJnyggNtQV4HMR0LVc8qsHYt5JbJ5SX4ojscQkYt+xYnCv9rJEDafgemi4O3ogsyZebvlZdZ2YT0OK5I140I8i1qhlWOE80+QOam/zliMb4TZxmAiXixaf0r4xVrcmKRK0Saq+eYS+Xcip9QJh50knLgdpQ48DhfjpJxvxTv5DMsfgFl4FNfi01xvyvkq4ZTjcu/4MqSIyOqEUs006/ByQp0L8/2cJPNA0f4tuEUUxmk5H4SZue85LMmLtJYe3hWZ6UK1m4R9J+CvovWXcs/IIlnBZ47EynwvrA8UYd3PgZfukswijMK5uCBvQ9y4gAYd6X4QLqlwyP4kuVhobYaImgIOL/qNTigtB2PxIS7q5hJT8LCImlKMyrUPcr5P1KFaEdYLRdL8QwTJvkpkakUv211pHyxMeoPIqjtEqA7BC6Lw7c69e4XJZwsHP1lo9Q2cgh+6OatbTBI3ahORI8e2lE+q8B2RKLc5MDH+Y9TpiJJWlZPkQcV8EfKlT7OIuJ05FlLDEuEC63I+v5pDqgo5YecndM7GXaFZmGyKqEkTq/moJy3EdtFsLyh6Zop2oB7n4VBRJvbgaZHBy/XCZVGtZgpYoyMjw/c5NokI3Cb64D2iKPYI1badS0Um/bynB+AM/IkrutvY207vX0FPzPQq3hJ/QwpYL1qKEaJ/2Soy8BqRa1aKzu+qg02G6MiuL5qvTjKniq6/SRTZL3GNjuJZFXriM014rSc/nrha9Dbd+ky1mtkgGqpZvSBDdAX/LfwNpVn1bU1P0BgAAAAASUVORK5CYII=" />
             <span class="d-none d-lg-block">Artist management</span>
@@ -17,25 +18,14 @@
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAABmJLR0QA/wD/AP+gvaeTAAAFJ0lEQVRYhe2XbWiVZRjHf9d9NrcjgqjpZBLNsdAMS7ezc1hBDE3PztT5+nwo59ESDUQhkpL2pSNCKkoEvWGw0FlULMM3tikYo0jdzo45K5NSE6Epai7NdTb13FcffOm4PeccTQsK//B8eO7r5f4998tzXzfc139AcrcJ/BPDQ65m2UFZV01n6566X/9VGF8oPF5gpsJ0YBSQk2TuUeEIKtsE3drWWPfNPwJTEqwuFuNZAzoJOK2wA6FV4bSgZxUZKjAcxS9IFWgesFvErIg2bDx4T2Acx/H83OVdjbIcaBcxNVF/wW4iEZsyKBIxvv3HKtTI66KMFVgXDRTWpI3JBPNouTPA29/7CcokRV6MBUZuyJSwD1TL8SXAGwq7uuPxZ75vrr90xzDXR2QbSpmIzIw2bPrytiF6yVexoByxWxT2xgKF01N9kCdVgv4FvrUoz4rIlHQgvorqUflF45/MLxpLx9FDrrup4+jBE/lF41tFdOWIjk5vx0/te9z8XEfm2mI1UUWWxho3vefqU7I4W/K6P0CpvtmobB7QffL55ubmq64xofAygTeNtcWtuz5s7203roTGswZojwVGbnCzA8iw+Csos0V1tofEQETmIDhd/R96OVVMLFD4DvCdGrPWzd4HpiRYXQw6ScRkWP0yG6iNNm3+vKXxo4ttDZu2oFKrypyUIZGIVSs1CsHSygXjMsIYY2YAp6P+gt2pQQDIRognN6hoHLRfuqBY2chGgTOKnZERxgpVCjsyb2FtQFnkC4b9ACWV8wICi0TYmTYsErEqsgOlKhOMiDIaoTU9CGiWd6XAAQwtvlD4gqjsB9qsJ3dVplhRWoHRvduzkl/8E8ODLeSQkFOZEsZ2vP8H8HRpxfwJVnSMUTkcbdr0BaCZYhOiHUbxlgUXDt63q/a8Kww5DEFBjaQ9fUsnP/egZtnXUC1V7AABVJSSyvDvxhIVw7rWhrofUyZQcw4sNjsxBLgJc8s0eRLZ5wDE6pBUeXzBsF89iW9BJwh8LUj9jccoe9Uw0SoHSivnP5USRuwDAOaK55aPvmVk9u2q7fSFwt3G2Hy3HOXl5VmXDHUoBzQrd2rbtam6RSXTFveXK907VXSj4zgP19fXJ3r7eFTyFY0nTxH0XcAKHEHF7wZz0VvgA0ap0VdjLiBwbS1ZMTUoI4935frcfBQNgPzQu73P1lZku4pMIxLp+w8SmwdwWRKp1wNgczgCIMjw3jbHcTwCU1HdnhFG0K2geb79xyr6gKoVgH49A9L+g3J6rthk/2Qd6/KGFIYZtVszwlwvFXcjstptdO5GjuN4jLIaaHQ7KLNcYhAxK1RtzNdyfEkbvH2zXeUyApLd/ZsvFE7ZaSLZP0knurxLgTFWmevab6qEpaHwGoWXUDO5rWljM0BRaFnOQDpDqGSnJPmL/MoFBjUebXyrB6A4NG+CQZpUdX2saXPNHcEQiZiSluPbBJ5AzewbQH9HxaF5EzzIZwpftQUKZ6Y69zLWwLle78cCQYXlsUDhO3dSAzuO4znR5V2qynqgIR6Pz01XA6csOwHOnjh8+VT1zE9HdHR6gVX5v3TOyi967GRH9axjNDenPIMcx/HkFvimXLicXQ/MA9a2BQpfOLvx3Z50/d32vckfrH5cjVmrEBQ4g7IdkWhCtOPGvcmjkq+CH9UqYCiqTRZZcaCp7tDt9HHHN8rSygXjFDvjej3yCJCbZO4GOYzqdqN2q9v2vacwvVUWXDi4h57BOeSc733W3Nf/Un8C/yUl6N2qQNwAAAAASUVORK5CYII="
                         alt="Profile" class="rounded-circle">
-                    <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                    <span class="d-none d-md-block dropdown-toggle ps-2">{{currentUser}}</span>
                 </a><!-- End Profile Iamge Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
-                        <h6>Kevin Anderson</h6>
-                        <span>Web Designer</span>
+                        <h6>{{currentUser}}</h6>
+                        <span style="color: green; font-size: 54px;">.</span>connected
                     </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                            <i class="bi bi-person"></i>
-                            <span>My Profile</span>
-                        </a>
-                    </li>
-
                     <li>
                         <hr class="dropdown-divider">
                     </li>

@@ -3,6 +3,8 @@
 namespace App\EventListener;
 
 use App\Entity\Log;
+use App\Entity\ResetPasswordRequest;
+use App\Entity\User;
 use Doctrine\ORM\Events;
 use Psr\Log\LoggerInterface;
 use Doctrine\Common\EventSubscriber;
@@ -44,9 +46,21 @@ class DoctrineSuscriber implements EventSubscriber
     public function log($message, $args)
     {
         $entity = $args->getEntity();
-        $message = $this->getNameClass($entity)." with id ".$entity->getId()." ".$message;
+        $message = $this->getNameClass($entity)." with id ".$entity->getId()." has been ".$message." by ";
         if (!($entity instanceof Log)) {
-            $this->logger->info($message);
+            if($entity instanceof ResetPasswordRequest ){
+                $message = "A reset password request has been asked by ";
+                $this->logger->info($message,[
+                    'requestedBy' => $entity->getRequestedBy()
+                ]);
+            }else{
+                if($entity instanceof User){
+                    $this->logger->info($message,[
+                        'requestedBy' => $entity->getUsername()
+                    ]);
+                }else
+                    $this->logger->info($message);
+            }
         }
     }
 

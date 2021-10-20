@@ -5,8 +5,8 @@
 /backend/.env.*.local
 /backend/config/secrets/prod/prod.decrypt.private.php
 /backend/public/bundles/
-/backend/var/
-/backend/vendor/
+backend/var/
+backend/vendor/
 ###< symfony/framework-bundle ###
 
 # Created by https://www.toptal.com/developers/gitignore/api/phpstorm+all,symfony,phpunit

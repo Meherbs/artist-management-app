@@ -16,7 +16,7 @@
             <div class="row">
 
                 <!-- Accounts Card -->
-                <div class="col-xxl-4 col-md-6">
+                <div class="col-xxl-4 col-md-4">
                     <div class="card info-card sales-card">
                         <div class="card-body" style="text-align: center;">
                             <h3 class="card-title" style="padding: 0px;">Accounts </h3>
@@ -25,7 +25,7 @@
                                     <i class="bi bi-person-badge"></i>
                                 </div>
                                 <div class="ps-3">
-                                    <h6>145</h6>
+                                    <h6>{{stats.accounts}}</h6>
                                     <span class="text-success small pt-1 fw-bold"></span>
                                 </div>
                             </div>
@@ -34,7 +34,7 @@
                 </div><!-- End Accounts Card -->
 
                 <!-- Celebrity Card -->
-                <div class="col-xxl-4 col-md-6">
+                <div class="col-xxl-4 col-md-4">
                     <div class="card info-card sales-card">
                         <div class="card-body" style="text-align: center;">
                             <h3 class="card-title" style="padding: 0px;">Celebrity </h3>
@@ -42,17 +42,36 @@
                                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                     <i>
                                         <img
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAACIUlEQVQ4jbWSQWsTURDH//Pe24amuGlcCYh6EAShVcRbDtVmUwy0J2uyFVqKehDEL+FX8CQi4smIEmuFHgIaG7Ue9NBCIDmIYKkISkva7BYbk91940ECRZdcxDnN/PgxzDAD/M+w860ZO9+a6edQFDzvtI4LiKyE/sIM0iSOaejlt6Xh9T9d1Uuyjjfth/L9yrOhb4pFRoW09GJxeBMActO7qa4SUwDWz136cdiQYXq5ZC4CAOXmvw9123FbAq4mpCWCJ2Ojya9v6t6N6tPEHQCwC+7N8VPm3XeNnaOa1QwBH0IgMTC4V6VMwb1FRI+rJfPj5FzT7HSMPIgbzDzBJDYBgBgWEb8G02gs5i+Ui5ZnO95JgC8LAXopGCkAKBctjwmHLJirAcn70HoDWm9wEN6zYK4CsMpFywMAwUgRU0XFYn693ZU5O+9OkTBqrIMmBKQCz0vgeRckpSGuf07idmIbzayzd4S1fyYkHYfPFQIA23FnQxmsyNA4Gwr6JINwRApdqZQOugAwNttKKh8TWlNNEo2Eyl8TvhrPnDYfRd42U3DnHIdlr3Yclrbjzka5IgpKQ1a2sHu1V2/x7jUjEJUoV0VBnzsDig1tF9yHBLAmvPoZ68ai3L8+cXKuaba7Mqc01vbzUFAaWtSqCwcafSfotOWJwXZiqVymzn6eubizLRRfANC/gSUT9WbcvZLNt8Di94SkwQCkRYkHUWv8U/wCYrbeXnzhYUQAAAAASUVORK5CYII=">
+                                            src="data:image/png;base64,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" />
                                     </i>
                                 </div>
                                 <div class="ps-3">
-                                    <h6>145</h6>
+                                    <h6>{{stats.celebrity}}</h6>
                                     <span class="text-success small pt-1 fw-bold"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div><!-- End celebrity Card -->
+
+                <!-- Representatives Card -->
+                <div class="col-xxl-4 col-md-4">
+                    <div class="card info-card sales-card">
+                        <div class="card-body" style="text-align: center;">
+                            <h3 class="card-title" style="padding: 0px;">All representatives </h3>
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-people"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{stats.representative}}</h6>
+                                    <span class="text-success small pt-1 fw-bold"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- End celebrity Card -->
+
 
                 <!-- Customers Card -->
                 <div class="col-xxl-4 col-xl-12">
@@ -62,19 +81,7 @@
                                 <h3 class="card-title" style="padding: 0px;">Representatives </h3>
                             </div>
                             <div class="row">
-                                <div class="col-xxl-3 col-md-3">
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-people"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h4> All </h4>
-                                            <h6>1244</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xxl-3 col-md-3">
+                                <div class="col-xxl-4 col-md-4">
                                     <div class="d-flex align-items-center">
                                         <div
                                             class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -85,11 +92,11 @@
                                         </div>
                                         <div class="ps-3">
                                             <h4> Agents </h4>
-                                            <h6>1244</h6>
+                                            <h6>{{stats.agents}}</h6>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xxl-3 col-md-3">
+                                <div class="col-xxl-4 col-md-4">
                                     <div class="d-flex align-items-center">
                                         <div
                                             class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -100,11 +107,11 @@
                                         </div>
                                         <div class="ps-3">
                                             <h4> Publicist </h4>
-                                            <h6>1244</h6>
+                                            <h6>{{stats.publicists}}</h6>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xxl-3 col-md-3">
+                                <div class="col-xxl-4 col-md-4">
                                     <div class="d-flex align-items-center">
                                         <div
                                             class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -115,7 +122,7 @@
                                         </div>
                                         <div class="ps-3">
                                             <h4> Manager </h4>
-                                            <h6>1244</h6>
+                                            <h6>{{stats.managers}}</h6>
                                         </div>
                                     </div>
                                 </div>

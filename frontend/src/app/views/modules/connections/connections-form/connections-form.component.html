@@ -1,0 +1,57 @@
+<div class="form-container">
+    <form [formGroup]="form">
+        <div class="row">
+            <div class="col col-12 col-md-12">
+                <h2>Connections Between Celebrity and representatives [{{ connection ? 'Updating' : 'Creation' }}]</h2>
+            </div>
+
+            <div class="col col-12 col-md-6">
+                <mat-form-field appearance="fill">
+                    <mat-label>Celebrity</mat-label>
+                    <mat-select formControlName="celebrity" name="celebrity" [compareWith]="compareSelectObjects">
+                        <mat-option *ngFor="let celebrite of celebrityList" [value]="celebrite">
+                            {{celebrite.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="col col-12 col-md-6">
+                <mat-form-field appearance="fill">
+                    <mat-label>Representative</mat-label>
+                    <mat-select formControlName="representative" name="representative"
+                        [compareWith]="compareSelectObjects">
+                        <mat-option *ngFor="let rep of representativeList" [value]="rep">
+                            {{rep.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="col col-12 col-md-6">
+                <mat-form-field appearance="fill">
+                    <mat-label>Role</mat-label>
+                    <mat-select formControlName="role" name="role">
+                        <mat-option [value]="1"> Agent </mat-option>
+                        <mat-option [value]="2"> Publicist </mat-option>
+                        <mat-option [value]="3"> Manager </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="col col-12 col-md-6">
+                <span> {{getConnection()}} </span>
+            </div>
+        </div>
+
+
+
+        <div class="col s12 col-sm-12 col-md-12 buttons-row">
+            <button (click)="save()" mat-raised-button class="btn-primary">
+                <mat-icon>save</mat-icon>
+                Save
+            </button>
+            <button mat-raised-button (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

@@ -2,7 +2,8 @@
     <h1>Accounts</h1>
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)" routerLink="/home/dashboard"
+                    routerLinkActive="active">Home</a></li>
             <li class="breadcrumb-item active">Accounts</li>
         </ol>
     </nav>
@@ -23,10 +24,6 @@
                     <a mat-list-item matTooltip="Supprimer" [matTooltipPosition]="'after'" (click)="delete()">
                         <mat-icon mat-list-icon>delete_forever</mat-icon>
                     </a>
-                    <!--a mat-list-item matTooltip="Reporter échéance" [matTooltipPosition]="'after'" 
-                        (click)="reportEcheance()">
-                        <mat-icon mat-list-icon>event</mat-icon>
-                    </a-->
                 </mat-nav-list>
             </div>
 

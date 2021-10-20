@@ -19,6 +19,24 @@ class ConnectionsRepository extends ServiceEntityRepository
         parent::__construct($registry, Connections::class);
     }
 
+    public function countAgents(){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('SELECT COUNT(c.id) FROM '.Connections::class .' c where c.isAgent = true');
+        return intval($query->getSingleScalarResult());
+    }
+
+    public function countPublicist(){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('SELECT COUNT(c.id) FROM '.Connections::class .' c where c.isPublicist = true');
+        return intval($query->getSingleScalarResult());
+    }
+
+    public function countManagers(){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('SELECT COUNT(c.id) FROM '.Connections::class .' c where c.isManager = true');
+        return intval($query->getSingleScalarResult());
+    }
+
     // /**
     //  * @return Connections[] Returns an array of Connections objects
     //  */

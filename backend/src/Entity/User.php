@@ -14,8 +14,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *     formats={"json"},
- *     normalizationContext={"groups"={"user_read", "user_details_read"},"enable_max_depth"=true},
- *     denormalizationContext={"groups"={"user_read", "user_details_read"},"enable_max_depth"=true},
+ *     normalizationContext={"groups"={"user_read", "user_details_read","logs_read","logs_details_read"},"enable_max_depth"=true},
+ *     denormalizationContext={"groups"={"user_read", "user_details_read","logs_read","logs_details_read"},"enable_max_depth"=true},
  *     collectionOperations={
  *      "get"={},
  *      "post"={},
@@ -50,7 +50,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"user_read", "user_details_read"})
+     * @Groups({"user_read", "user_details_read", "logs_read","logs_details_read"})
      */
     private $username;
 
@@ -82,6 +82,11 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity=ResetPasswordRequest::class, mappedBy="user")
      */
     private $resetPasswordRequests;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Log", mappedBy="user")
+     */
+    private $logs;
 
     public function __construct()
     {
@@ -230,6 +235,36 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($resetPasswordRequest->getUser() === $this) {
                 $resetPasswordRequest->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Log[]
+     */
+    public function getLogs(): Collection
+    {
+        return $this->logs;
+    }
+
+    public function addLogs(Log $log): self
+    {
+        if (!$this->logs->contains($log)) {
+            $this->logs[] = $log;
+            $log->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLogs(Log $log): self
+    {
+        if ($this->logs->removeElement($log)) {
+            // set the owning side to null (unless already changed)
+            if ($log->getUser() === $this) {
+                $log->setUser(null);
             }
         }
 

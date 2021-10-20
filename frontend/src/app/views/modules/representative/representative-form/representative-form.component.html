@@ -1,1 +1,80 @@
-<p>representative-form works!</p>
+<div class="form-container">
+    <form [formGroup]="form" (ngSubmit)="save()">
+        <div class="row">
+            <div class="col col-12 col-md-12">
+                <h2>Representative [{{ representative ? 'Updating' : 'Creation' }}]</h2>
+            </div>
+
+            <div class="col col-12 col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" />
+                    <mat-error>
+                        <div *ngIf="form.get('name').getError('required')">The name field is required!
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col col-12 col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Company</mat-label>
+                    <input maxlength="255" matInput formControlName="company" />
+                    <mat-error>
+                        <div *ngIf="form.get('company').getError('required')">This field is required!
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+
+
+    <div class="row" style="min-height: 260px;">
+        <div class="col col-12 col-md-6">
+            <form [formGroup]="formEmail">
+                <h3> Add new Email </h3>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input type="text" matInput formControlName="email" />
+                </mat-form-field>
+                <mat-error>
+                    <div *ngIf="formEmail.get('email').getError('pattern')">Please enter a valid email adress!
+                    </div>
+                </mat-error>
+                <button (click)="addNewEmail()" mat-raised-button class="btn-primary">
+                    <mat-icon>add_circle_outline</mat-icon>
+                    Add email
+                </button>
+            </form>
+        </div>
+
+        <div class="col col-12 col-md-6">
+            <h3> Emails list </h3>
+            <mat-nav-list>
+                <div class="input-group has-validation" *ngFor="let email of emailsList; let indexOfelement=index;"
+                    style="padding: 5px;">
+                    <a class="input-group-text" style="cursor: pointer;" id="inputGroupPrepend2"
+                        (click)="removeEmail(indexOfelement)">
+                        <mat-icon mat-list-icon>delete_forever</mat-icon>
+                    </a>
+                    <input type="text" matInput name="adress" class="form-control" style="padding-left: 10px;"
+                        [(ngModel)]="email.adress" />
+                </div>
+
+                <!--a mat-list-item *ngFor="let email of emailsList"> {{ email.adress }} </a-->
+            </mat-nav-list>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col s12 col-sm-12 col-md-12 buttons-row" style="height: 60px;">
+            <button (click)="save()" mat-raised-button class="btn-primary">
+                <mat-icon>save</mat-icon>
+                Save
+            </button>
+            <button mat-raised-button (click)="cancel()">Cancel</button>
+        </div>
+    </div>
+</div>

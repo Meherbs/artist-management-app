@@ -1,7 +1,7 @@
 import { IRepresentative } from "./presentative";
 
 export interface IEmailAdress {
-    id: number;
+    id?: number;
     adress?: string;
     representative?: IRepresentative;
 }

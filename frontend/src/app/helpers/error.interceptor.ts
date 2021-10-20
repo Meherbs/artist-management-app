@@ -14,10 +14,9 @@ export class ErrorInterceptor implements HttpInterceptor {
             throwError(request);
             console.log(err);
             const error = err.error.message || err.statusText;
-            if (err.status === 401 && (error == 'JWT Token not found' || error == "Expired JWT Token")) {
+            if (err.status === 401) {
                 // auto logout if 401 response returned from api
                 this.authenticationService.logout();
-                //location.reload();
             }
 
             return throwError(error);

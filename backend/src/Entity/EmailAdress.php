@@ -11,8 +11,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *     formats={"json"},
- *     normalizationContext={"groups"={"representative_read", "representative_details_read"},"enable_max_depth"=true},
- *     denormalizationContext={"groups"={"representative_read", "representative_details_read"},"enable_max_depth"=true},
+ *     normalizationContext={"groups"={"connections_read", "connections_details_read", "representative_read", "representative_details_read"},"enable_max_depth"=true},
+ *     denormalizationContext={"groups"={"connections_read", "connections_details_read", "representative_read", "representative_details_read"},"enable_max_depth"=true},
  *     collectionOperations={
  *      "get"={},
  *      "post"={},
@@ -24,7 +24,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *       "delete"={},
  *     }
  * )
- * @ORM\HasLifecycleCallbacks()
+ *
  * @ORM\Entity(repositoryClass=EmailAdressRepository::class)
  */
 class EmailAdress
@@ -37,19 +37,16 @@ class EmailAdress
     private $id;
 
     /**
-     * @Groups({"representative_read", "representative_details_read"})
+     * @Groups({"connections_read", "connections_details_read", "representative_read", "representative_details_read"})
      * @ORM\Column(type="string", length=255)
      */
     private $adress;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Representative::class, inversedBy="emails")
+     * @ORM\ManyToOne(targetEntity=Representative::class, inversedBy="emails", cascade={"all"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $representative;
-
-
-    //private $representative;
 
     public function getId(): ?int
     {
@@ -79,4 +76,11 @@ class EmailAdress
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->adress;
+    }
+
+
 }

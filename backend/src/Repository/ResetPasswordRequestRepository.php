@@ -42,7 +42,7 @@ class ResetPasswordRequestRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('r')
             ->where('r.token = :val')
             ->andWhere('r.expireAt > :dateNow')
-            ->setParameter('dateNow', new \DateTime(), \Doctrine\DBAL\Types\Type::DATETIME)
+            ->setParameter('dateNow', new \DateTime())
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()

@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Celebrity;
+use App\Entity\Connections;
+use App\Entity\Representative;
 use App\Entity\ResetPasswordRequest;
 use App\Entity\User;
+use phpDocumentor\Reflection\Types\Collection;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -152,7 +156,7 @@ class ApiController extends AbstractController
                     $userPasswordEncoder->encodePassword($user, $password)
                 );
                 $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->remove($resetPassword);
+                //$entityManager->remove($resetPassword);*/
                 // tell Doctrine you want to (eventually) save the Product (no queries yet)
                 $entityManager->persist($user);
 
@@ -161,15 +165,50 @@ class ApiController extends AbstractController
 
                 return $this->json([
                     'response' => 'password has been changed successfully ',
-                    'code' => 1
+                    'code' => 1,
+                    'user' => $user
                 ]);
             }catch (\Exception $exception){
                 return $this->json([
                     'response' => 'error when persisting new password !',
-                    'code' => 0
+                    'code' => 0,
+                    'exception' => $exception
                 ]);
             }
         }
+    }
+
+
+    /**
+     * @Route("/api/stats", name="stats_datas")
+     */
+    public function statGetters(Request $request): Response
+    {
+        try{
+            $celebrityNb = $this->getDoctrine()->getRepository(Celebrity::class)->count([]);
+            $representativeNb = $this->getDoctrine()->getRepository(Representative::class)->count([]);
+            $accountsNb = $this->getDoctrine()->getRepository(User::class)->count([]);
+            $publicistNb = $this->getDoctrine()->getRepository(Connections::class)->countPublicist();
+            $agentsNb = $this->getDoctrine()->getRepository(Connections::class)->countAgents();
+            $managersNb = $this->getDoctrine()->getRepository(Connections::class)->countManagers();
+
+            return $this->json([
+                'celebrity' => $celebrityNb,
+                'representative' => $representativeNb,
+                'accounts' => $accountsNb,
+                'publicist' => $publicistNb,
+                'managers'=> $managersNb,
+                'agents'=> $agentsNb,
+                'code' => 1
+            ]);
+        }catch (\Exception $exception){
+            return $this->json([
+                'response' => 'error when get stats !',
+                'code' => 0,
+                'exception' => $exception
+            ]);
+        }
+
     }
 
     /**

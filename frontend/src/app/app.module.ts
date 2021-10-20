@@ -7,6 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
+//import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,6 +17,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { HeaderComponent } from './shared/header/header.component';
@@ -28,7 +30,7 @@ import { FlashMessagesModule } from 'flash-messages-angular';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor, JwtInterceptor } from './helpers';
 import { HomeComponent } from './views/home/home.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RepresentativeComponent } from './views/modules/representative/representative.component';
 import { RepresentativeSaveComponent } from './views/modules/representative/representative-save/representative-save.component';
@@ -41,6 +43,10 @@ import { CelebrityFormComponent } from './views/modules/celebrity/celebrity-form
 import { AccountsComponent } from './views/modules/accounts/accounts.component';
 import { AccountsSaveComponent } from './views/modules/accounts/accounts-save/accounts-save.component';
 import { AccountsFormComponent } from './views/modules/accounts/accounts-form/accounts-form.component';
+import { LogsComponent } from './views/modules/logs/logs.component';
+import { ConnectionsComponent } from './views/modules/connections/connections.component';
+import { ConnectionsSaveComponent } from './views/modules/connections/connections-save/connections-save.component';
+import { ConnectionsFormComponent } from './views/modules/connections/connections-form/connections-form.component';
 
 @NgModule({
   declarations: [
@@ -63,12 +69,17 @@ import { AccountsFormComponent } from './views/modules/accounts/accounts-form/ac
     CelebrityFormComponent,
     AccountsComponent,
     AccountsSaveComponent,
-    AccountsFormComponent
+    AccountsFormComponent,
+    LogsComponent,
+    ConnectionsComponent,
+    ConnectionsSaveComponent,
+    ConnectionsFormComponent
   ],
   imports: [
     ComponentsModule,
     DragDropModule,
     MatTabsModule,
+    //MatTableModule,
     MatCardModule,
     MatListModule,
     MatSidenavModule,
@@ -84,6 +95,7 @@ import { AccountsFormComponent } from './views/modules/accounts/accounts-form/ac
     MatDialogModule,
     MatSlideToggleModule,
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     FlashMessagesModule.forRoot(),

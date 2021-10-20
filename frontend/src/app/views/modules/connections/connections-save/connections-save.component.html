@@ -1,0 +1,20 @@
+<div class="manager-view" style="height: inherit;">
+    <div class="left-side" style="height: inherit; margin: -19px;">
+        <mat-nav-list>
+            <a mat-list-item matTooltip="Back to list" [matTooltipPosition]="'after'"
+                [routerLink]="'/home/connections'">
+                <mat-icon mat-list-icon>arrow_back</mat-icon>
+            </a>
+        </mat-nav-list>
+    </div>
+
+    <div class="right-side">
+        <mat-card>
+            <mat-card-content>
+                <app-connections-form [connection]="_connection" (onSave)="navigateToList($event)"
+                    (onCancellation)="navigateToList()">
+                </app-connections-form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ResetPasswordRequestRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ResetPasswordRequestRepository::class)
@@ -37,6 +39,11 @@ class ResetPasswordRequest
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $requestedBy;
 
     /**
      * ResetPasswordRequest constructor.
@@ -97,8 +104,25 @@ class ResetPasswordRequest
     public function setUser(?User $user): self
     {
         $this->user = $user;
+        $this->setRequestedBy($user->getUsername());
         return $this;
         //$token = sha1(uniqid($user->getUsername(), true));
         //$this->setToken($token);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRequestedBy()
+    {
+        return $this->requestedBy;
+    }
+
+    /**
+     * @param mixed $requestedBy
+     */
+    public function setRequestedBy($requestedBy): void
+    {
+        $this->requestedBy = $requestedBy;
     }
 }

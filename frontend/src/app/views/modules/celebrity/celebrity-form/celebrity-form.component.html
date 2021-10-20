@@ -1,1 +1,51 @@
-<p>celebrity-form works!</p>
+<div class="form-container">
+    <form [formGroup]="form" (ngSubmit)="save()">
+        <div class="row">
+            <div class="col col-12 col-md-12">
+                <h2>Celebrity [{{ celebrity ? 'Updating' : 'Creation' }}]</h2>
+            </div>
+
+            <div class="col col-12 col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" />
+                    <mat-error>
+                        <div *ngIf="form.get('name').getError('required')">The name field is required!
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col col-12 col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Bio</mat-label>
+                    <textarea maxlength="255" matInput formControlName="bio">
+                    </textarea>
+                    <mat-error>
+                        <div *ngIf="form.get('bio').getError('required')">This field is required!
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col col-12 col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Birthday</mat-label>
+                    <input type="date" matInput formControlName="birthday" />
+                    <mat-error>
+                        <div *ngIf="form.get('birthday').getError('required')">The birthday field is required!
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col s12 col-sm-12 col-md-12 buttons-row">
+                <button type="submit" mat-raised-button class="btn-primary">
+                    <mat-icon>save</mat-icon>
+                    Save
+                </button>
+                <button mat-raised-button (click)="cancel()">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

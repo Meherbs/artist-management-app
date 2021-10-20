@@ -13,8 +13,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *     formats={"json"},
- *     normalizationContext={"groups"={"representative_read", "representative_details_read"},"enable_max_depth"=true},
- *     denormalizationContext={"groups"={"representative_read", "representative_details_read"},"enable_max_depth"=true},
+ *     normalizationContext={"groups"={"connections_read", "connections_details_read","representative_read", "representative_details_read"},"enable_max_depth"=true},
+ *     denormalizationContext={"groups"={"connections_read", "connections_details_read","representative_read", "representative_details_read"},"enable_max_depth"=true},
  *     collectionOperations={
  *      "get"={},
  *      "post"={},
@@ -48,19 +48,19 @@ class Representative
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"representative_read", "representative_details_read"})
+     * @Groups({"connections_read", "connections_details_read","representative_read", "representative_details_read"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"representative_read", "representative_details_read"})
+     * @Groups({"connections_read", "connections_details_read","representative_read", "representative_details_read"})
      */
     private $company;
 
     /**
-     * @Groups({"representative_read", "representative_details_read"})
-     * @ORM\OneToMany(targetEntity=EmailAdress::class, mappedBy="representative", orphanRemoval=true)
+     * @Groups({"connections_read", "connections_details_read", "representative_read", "representative_details_read"})
+     * @ORM\OneToMany(targetEntity=EmailAdress::class, mappedBy="representative", cascade={"all"}, orphanRemoval=true)
      */
     private $emails;
 

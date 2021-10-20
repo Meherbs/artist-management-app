@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/Models/User';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,16 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  get currentUser(): string {
+    var data = JSON.parse(localStorage.getItem('artist-manag-token') || '{}');
+    if (data.value !== undefined) {
+      let TOKEN = data.value;
+      let user = JSON.parse(atob(TOKEN.split('.')[1])) as User;
+      return user.username;
+    } else
+      return "";
+  }
+
   toggleSidebar() {
     document.body.classList.toggle("toggle-sidebar");
   }
@@ -21,7 +32,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('artist-manag-token');
-    this.router.navigate(['/login']);
+    window.location.reload();
   }
 
 }

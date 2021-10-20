@@ -23,6 +23,7 @@ class DbProcessor
         $record['extra']['url'] = $this->request->getBaseUrl();
 
         $user = $this->security->getUser();
+
         $record['extra']['user'] = $user;
 
         return $record;

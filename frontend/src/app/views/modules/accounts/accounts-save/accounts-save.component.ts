@@ -31,7 +31,7 @@ export class AccountsSaveComponent implements OnInit {
   }
 
   navigateToList(user?: User) {
-    this.router.navigate(['app', 'accounts'])
+    this.router.navigate(['home', 'accounts'])
   }
 
 

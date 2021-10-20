@@ -1261,6 +1261,10 @@ sbc-modal .header{
     cursor: not-allowed !important;
 }
 
+.app-save-area {
+  height: inherit;
+}
+
 /* custom style for the calendar */
 .fc-button{
     background: transparent;

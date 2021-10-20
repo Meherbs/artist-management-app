@@ -26,7 +26,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\LogRepository")
- * @ORM\HasLifecycleCallbacks
+ * @ORM\HasLifecycleCallbacks()
  */
 class Log
 {
@@ -79,6 +79,12 @@ class Log
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="logs")
      */
     private $user;
+
+    /**
+     * @Groups({"logs_read","logs_details_read"})
+     * @ORM\Column(type="string", length=255)
+     */
+    private $doneBy;
 
     public function getId(): ?int
     {
@@ -175,7 +181,29 @@ class Log
     public function setUser(?User $user): self
     {
         $this->user = $user;
-
+        if($user !== null) {
+            $this->setDoneBy($user->getUsername());
+            $this->message = $this->message." ".$user->getUsername();
+        }else{
+            $this->message = $this->message." ".$this->getDoneBy();
+        }
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDoneBy()
+    {
+        return $this->doneBy;
+    }
+
+    /**
+     * @param mixed $doneBy
+     */
+    public function setDoneBy($doneBy): void
+    {
+        $this->doneBy = $doneBy;
+    }
+
 }

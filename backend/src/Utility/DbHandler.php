@@ -26,6 +26,11 @@ class DbHandler extends AbstractProcessingHandler
         $log->setLevelName($record['level_name']);
         $log->setMessage($record['message']);
         $log->setExtra($record['extra']);
+        if(array_key_exists('requestedBy', $record['context'])){
+            if($record['context']['requestedBy'] !== null){
+                $log->setDoneBy($record['context']['requestedBy']);
+            }
+        }
         $log->setUser($record['extra']['user']);
 
         $this->manager->persist($log);
