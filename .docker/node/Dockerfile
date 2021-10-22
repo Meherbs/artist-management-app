@@ -2,7 +2,7 @@ FROM node:14
 
 USER node
 
-RUN sudo chmod -R 777 /home/node
+RUN chmod -R 777 /home/node
 RUN mkdir /home/node/.npm-global
 ENV PATH=/home/node/.npm-global/bin:$PATH
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
