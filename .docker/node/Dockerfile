@@ -12,8 +12,8 @@ ENV HOME=/home/node
 WORKDIR $HOME/app
 
 RUN npm i -g npm@latest
-
-RUN chown -R node node_modules
+RUN ls
+RUN chown -R node /app/node_modules
 RUN npm install -g @angular/cli@latest && npm cache clean --force
 RUN npm install --save-dev @angular-devkit/build-angular
 RUN npm install --save
