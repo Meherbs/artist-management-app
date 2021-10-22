@@ -1,7 +1,7 @@
 FROM node:14
 
 USER node
-
+RUN groupmod -g 500 node && usermod -u 500 node
 RUN chmod -R 777 /home/node
 RUN mkdir /home/node/.npm-global
 ENV PATH=/home/node/.npm-global/bin:$PATH
@@ -13,7 +13,7 @@ WORKDIR $HOME/app
 
 RUN npm i -g npm@latest
 
-RUN chmod -R 777 /home/node/app
+RUN chown -R node:node /home/node/app
 RUN npm install -g @angular/cli@latest && npm cache clean --force
 RUN npm install --save-dev @angular-devkit/build-angular
 RUN npm install --save
