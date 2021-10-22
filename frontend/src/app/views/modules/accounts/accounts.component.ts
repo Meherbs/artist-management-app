@@ -91,13 +91,13 @@ export class AccountsComponent implements OnInit {
 
   edit() {
     let model: User = this.table.getSelectedRows()[0];
-    if (model !== undefined) this._router.navigate(['app', 'accounts', model.id, 'edit']);
-    else alert("s'il vous plait sélectionnez un utilisateur pour procéder!");
+    if (model !== undefined) this._router.navigate(['home', 'accounts', model.id, 'edit']);
+    else alert("Please select one user to proceed!");
   }
 
   delete() {
     let model: User = this.table.getSelectedRows()[0];
     if (model !== undefined) this._service.delete(model.id).subscribe(() => this.loadData());
-    else alert("s'il vous plait sélectionnez un utilisateur pour procéder!");
+    else alert("Please select one user to proceed!");
   }
 }

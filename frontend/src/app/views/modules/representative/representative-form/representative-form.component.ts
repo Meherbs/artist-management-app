@@ -22,12 +22,14 @@ export class RepresentativeFormComponent implements OnInit {
   emailsList: IEmailAdress[];
 
   addNewEmail() {
-    if (this.checkEmailExist()) {
-      alert("You have already add this email adress");
-    } else {
-      this.emailsList.push({
-        adress: this.formEmail.controls.email.value
-      });
+    if (this.formEmail.valid && this.formEmail.controls.email.value !== null) {
+      if (this.checkEmailExist()) {
+        alert("You have already add this email adress");
+      } else {
+        this.emailsList.push({
+          adress: this.formEmail.controls.email.value
+        });
+      }
     }
   }
 
@@ -84,7 +86,6 @@ export class RepresentativeFormComponent implements OnInit {
 
   save() {
     if (this.form.valid) {
-      alert('submit and send');
       const data: IRepresentative = this.form.getRawValue();
       data.emails = this.emailsList;
       if (this.representative) {

@@ -19,8 +19,10 @@ class DbProcessor
     public function __invoke(array $record)
     {
         //on modifie le $record pour ajouter nos infos.
-        $record['extra']['clientIp'] = $this->request->getClientIp();
-        $record['extra']['url'] = $this->request->getBaseUrl();
+        if($this->request){
+            $record['extra']['clientIp'] = $this->request->getClientIp();
+            $record['extra']['url'] = $this->request->getBaseUrl();
+        }
 
         $user = $this->security->getUser();
 

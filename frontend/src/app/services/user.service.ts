@@ -7,9 +7,20 @@ import { Observable } from 'rxjs';
 import { handleError } from './error.handler';
 import { catchError } from 'rxjs/operators';
 import { User } from '../Models/User';
+import { DeleteData } from '../Models/delete_data';
 
 @Injectable({ providedIn: 'root' })
 export class UserService extends APIService<User> {
+
+    /**
+     * @override
+     * 
+     */
+    protected _deleteData: DeleteData = {
+        id: 0,
+        namespace: "App\\Entity\\User"
+    };
+    
     constructor(protected _http: HttpClient) {
         super(`${environment.apiUrl}/users`, _http);
     }

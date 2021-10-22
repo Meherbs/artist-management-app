@@ -40,7 +40,7 @@ class Representative
 
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      * @ORM\Column(type="integer")
      * @Groups({"representative_read", "representative_details_read"})
      */

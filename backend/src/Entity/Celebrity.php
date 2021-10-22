@@ -35,7 +35,7 @@ class Celebrity
 
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      * @Groups({"celebrity_read", "celebrity_details_read"})
      * @ORM\Column(type="integer")
      */

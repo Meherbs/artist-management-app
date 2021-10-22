@@ -7,6 +7,7 @@ import { ConnectionService } from 'src/app/services/app-services/connection.serv
 import { RepresentativeService } from 'src/app/services/app-services/representative.service';
 import { CelebrityService } from 'src/app/services/app-services/celebrity.service';
 import { IRepresentative } from 'src/app/Models/presentative';
+import { FlashMessagesService } from 'flash-messages-angular';
 
 @Component({
   selector: 'app-connections-form',
@@ -41,6 +42,7 @@ export class ConnectionsFormComponent implements OnInit {
     private service: ConnectionService,
     private representativeService: RepresentativeService,
     private celebrityService: CelebrityService,
+    private _flashMessagesService: FlashMessagesService,
     private formbuilder: FormBuilder
   ) {
     this.form = formbuilder.group({
@@ -119,12 +121,25 @@ export class ConnectionsFormComponent implements OnInit {
       if (this.connection) {
         this.service
           .update(this.connection.id, data)
-          .subscribe((res: IConnections) => this.onSave.emit(res))
+          .subscribe((res: any) => {
+            if (res.code == 0) {
+              alert('Erreur ! ' + res.detail);
+            } else {
+              this.onSave.emit(res);
+            }
+          })
           ;
       } else {
         this.service
           .create(data)
-          .subscribe((res: IConnections) => this.onSave.emit(res))
+          .subscribe((res: any) => {
+            if (res.code == 0) {
+              alert('Erreur ! ' + res.detail);
+              3.0
+            } else {
+              this.onSave.emit(res);
+            }
+          })
           ;
       }
     }

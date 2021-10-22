@@ -185,7 +185,13 @@ class Log
             $this->setDoneBy($user->getUsername());
             $this->message = $this->message." ".$user->getUsername();
         }else{
-            $this->message = $this->message." ".$this->getDoneBy();
+            if($this->getDoneBy() !== null && $this->getDoneBy() !== ''){
+                $this->message = $this->message." ".$this->getDoneBy();
+            }else{
+                $this->setDoneBy("system");
+                $this->message = $this->message." system";
+            }
+
         }
         return $this;
     }

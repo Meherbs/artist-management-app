@@ -78,14 +78,14 @@ export class CelebrityComponent implements OnInit {
 
   edit() {
     let model: ICelebrity = this.table.getSelectedRows()[0];
-    if (model !== undefined) this._router.navigate(['app', 'celebrity', model.id, 'edit']);
-    else alert('please select a representative to proceed!');
+    if (model !== undefined) this._router.navigate(['home', 'celebrity', model.id, 'edit']);
+    else alert('please select one celebrity to proceed!');
   }
 
   delete() {
     let model: ICelebrity = this.table.getSelectedRows()[0];
     if (model !== undefined) this._service.delete(model.id).subscribe(() => this.loadData());
-    else alert('please select a representative to proceed!');
+    else alert('please select one celebrity to proceed!');
   }
 
 

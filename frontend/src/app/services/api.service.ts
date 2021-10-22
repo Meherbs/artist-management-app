@@ -4,14 +4,22 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { handleError } from './error.handler';
 import { ApiServiceInterface } from './api-service.interface';
+import { DeleteData } from '../Models/delete_data';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class APIService<T> implements ApiServiceInterface<T>{
 
+    protected _deleteData: DeleteData = {
+        id: 0,
+        namespace: ""
+    };
+
     constructor(
         @Inject('_api') protected _api: string,
         @Inject('_http') protected _http: HttpClient,
-    ) { }
+    ) {
+    }
 
     /**
      * Get all resources
@@ -59,9 +67,11 @@ export class APIService<T> implements ApiServiceInterface<T>{
      * @param id id of the resource
      */
     delete(id: any): Observable<any> {
-        return this._http.delete(`${this._api}/${id}`)
+        this._deleteData.id = id;
+        return this._http.post(`${environment.apiUrl}/removeApi`, this._deleteData)
             .pipe(
                 catchError(handleError)
             );
+
     }
 }

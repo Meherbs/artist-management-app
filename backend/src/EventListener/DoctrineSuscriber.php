@@ -23,8 +23,8 @@ class DoctrineSuscriber implements EventSubscriber
     {
         return [
             Events::postPersist,
-            Events::postUpdate,
-            Events::postRemove
+            Events::postUpdate
+            //Events::preRemove
         ];
     }
 
@@ -38,30 +38,35 @@ class DoctrineSuscriber implements EventSubscriber
         $this->log('updated', $args);
     }
 
-    public function postRemove(LifecycleEventArgs $args)
-    {
-        $this->log('deleted', $args);
-    }
-
     public function log($message, $args)
     {
         $entity = $args->getEntity();
-        $message = $this->getNameClass($entity)." with id ".$entity->getId()." has been ".$message." by ";
-        if (!($entity instanceof Log)) {
-            if($entity instanceof ResetPasswordRequest ){
-                $message = "A reset password request has been asked by ";
-                $this->logger->info($message,[
-                    'requestedBy' => $entity->getRequestedBy()
-                ]);
-            }else{
-                if($entity instanceof User){
+        if($message !== "deleted"){
+            $message = $this->getNameClass($entity)." with id ".$entity->getId()." has been ".$message." by ";
+            if (!($entity instanceof Log)) {
+                if($entity instanceof ResetPasswordRequest ){
+                    $message = "A reset password request has been asked by ";
                     $this->logger->info($message,[
-                        'requestedBy' => $entity->getUsername()
+                        'requestedBy' => $entity->getRequestedBy()
                     ]);
-                }else
-                    $this->logger->info($message);
+                }else{
+                    if($entity instanceof User){
+                        $this->logger->info($message,[
+                            'requestedBy' => $entity->getUsername()
+                        ]);
+                    }else
+                        $this->logger->info($message);
+                }
             }
         }
+        else{
+            if($entity !== null){
+                $message = $this->getNameClass($entity)." has been ".$message." by ";
+                $this->logger->info($message);
+            }
+        }
+
+
     }
 
     private function getNameClass($obj){

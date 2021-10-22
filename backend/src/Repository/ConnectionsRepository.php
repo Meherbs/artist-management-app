@@ -37,6 +37,35 @@ class ConnectionsRepository extends ServiceEntityRepository
         return intval($query->getSingleScalarResult());
     }
 
+    public function existConnectionForAgentOrManager($representative, $celebrity, $id=0){
+        $em = $this->getEntityManager();
+        if($id !== 0){
+            $query = $em->createQuery('SELECT COUNT(c.id) FROM '.Connections::class .' c where c.representative = '
+                .$representative.' and c.celebrity = '.$celebrity.' and c.id <> '.$id.
+                ' and (c.isAgent = true or c.isManager = true)');
+        }else{
+            $query = $em->createQuery('SELECT COUNT(c.id) FROM '.Connections::class .' c where c.representative = '
+                .$representative.' and c.celebrity = '.$celebrity.
+                ' and (c.isAgent = true or c.isManager = true)');
+        }
+
+        return intval($query->getSingleScalarResult());
+    }
+
+    public function existConnectionForPublicist($representative, $celebrity, $id=0){
+        $em = $this->getEntityManager();
+        if($id !== 0) {
+            $query = $em->createQuery('SELECT COUNT(c.id) FROM ' . Connections::class .
+                ' c where c.representative = ' . $representative . ' and c.id <> ' . $id .
+                ' and c.celebrity = ' . $celebrity . ' and (c.isAgent = false and c.isManager = false)');
+        }else{
+            $query = $em->createQuery('SELECT COUNT(c.id) FROM ' . Connections::class .
+                ' c where c.representative = ' . $representative .
+                ' and c.celebrity = ' . $celebrity . ' and (c.isAgent = false and c.isManager = false)');
+        }
+        return intval($query->getSingleScalarResult());
+    }
+
     // /**
     //  * @return Connections[] Returns an array of Connections objects
     //  */

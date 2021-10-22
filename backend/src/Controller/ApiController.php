@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Celebrity;
 use App\Entity\Connections;
+use App\Entity\Log;
 use App\Entity\Representative;
 use App\Entity\ResetPasswordRequest;
 use App\Entity\User;
@@ -14,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\Security;
 
 class ApiController extends AbstractController
 {
@@ -176,6 +178,43 @@ class ApiController extends AbstractController
                 ]);
             }
         }
+    }
+
+    /**
+     * @Route("/api/removeApi", name="remove_entity_api", methods={"POST"})
+     */
+    public function removeEntity(Request $request, Security $security): Response
+    {
+        $content = json_decode($request->getContent(), true);
+        $namespace = $content['namespace'];
+        $id = $content['id'];
+
+        $entity = $this->getDoctrine()
+            ->getRepository($namespace)
+            ->find($id);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($entity);
+        $log = new Log();
+        $tab = explode("\\", $namespace);
+        $log->setLevel(200);
+        $log->setLevelName('INFO');
+        $name =  $tab[count($tab)-1];
+        $log->setMessage($name." with id ".$entity->getId()." deleted by ");
+        $log->setDoneBy($security->getUser()->getUsername());
+        $log->setUser($security->getUser());
+        $log->setExtra([]);
+        $log->setCreatedAt(new \DateTimeImmutable());
+
+        $entityManager->persist($log);
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+
+        return $this->json([
+            'response' => 'entity removed successfully!',
+            'code' => 1,
+            'data'=> $content
+        ]);
     }
 
 

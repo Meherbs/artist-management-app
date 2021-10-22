@@ -101,7 +101,7 @@ export class RepresentativeComponent implements OnInit {
 
   edit() {
     let model: IRepresentative = this.table.getSelectedRows()[0];
-    if (model !== undefined) this._router.navigate(['app', 'representatives', model.id, 'edit']);
+    if (model !== undefined) this._router.navigate(['home', 'representatives', model.id, 'edit']);
     else alert('please select a representative to proceed!');
   }
 

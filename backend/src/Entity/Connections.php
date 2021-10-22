@@ -16,10 +16,20 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     collectionOperations={
  *      "get"={},
  *      "post"={},
+ *      "create_connection"={
+ *          "method"="POST",
+ *          "path"="/connections/create",
+ *          "controller"=App\Controller\Api\CreateEditConnection::class
+ *       }
  *     },
  *     itemOperations={
  *       "get"={},
  *       "patch"={},
+ *       "create_connection"={
+ *          "method"="PATCH",
+ *          "path"="/connections/edit/{id}.{_format}",
+ *          "controller"=App\Controller\Api\CreateEditConnection::class
+ *       },
  *       "put"={},
  *       "delete"={},
  *     }
@@ -59,14 +69,14 @@ class Connections
 
     /**
      * @Groups({"connections_read", "connections_details_read", "representative_read", "representative_details_read", "celebrity_read", "celebrity_details_read"})
-     * @ORM\ManyToOne(targetEntity=Representative::class, cascade={"all"}, inversedBy="celebrities")
+     * @ORM\ManyToOne(targetEntity=Representative::class, inversedBy="celebrities")
      * @ORM\JoinColumn(name="representative", nullable=false)
      */
     private $representative;
 
     /**
      * @Groups({"connections_read", "connections_details_read", "representative_read", "representative_details_read", "celebrity_read", "celebrity_details_read"})
-     * @ORM\ManyToOne(targetEntity=Celebrity::class, cascade={"all"}, inversedBy="representatives")
+     * @ORM\ManyToOne(targetEntity=Celebrity::class, inversedBy="representatives")
      * @ORM\JoinColumn(name="celebrity",nullable=false)
      */
     private $celebrity;
