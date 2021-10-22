@@ -10,9 +10,11 @@ ENV HOME=/home/node
 
 WORKDIR $HOME/app
 
-RUN npm i -g npm
+RUN npm i -g npm@latest
 
-RUN npm install -g @angular/cli && npm cache clean --force
+RUN npm install -g @angular/cli@latest && npm cache clean --force
+RUN npm install --save-dev @angular-devkit/build-angular
+RUN npm install --save
 
 EXPOSE 4200
 
