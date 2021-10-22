@@ -1,7 +1,6 @@
 FROM node:14
 
 USER node
-RUN groupmod -g 500 node && usermod -u 500 node
 RUN chmod -R 777 /home/node
 RUN mkdir /home/node/.npm-global
 ENV PATH=/home/node/.npm-global/bin:$PATH
