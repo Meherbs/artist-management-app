@@ -52,5 +52,5 @@ security:
         - { path: ^/auth/forget-password, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/auth/reset-password, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/uploadedFiles, roles: IS_AUTHENTICATED_FULLY }
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/test, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # - { path: ^/profile, roles: ROLE_USER }

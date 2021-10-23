@@ -251,7 +251,7 @@ class ApiController extends AbstractController
     }
 
     /**
-     * @Route("/api/testApi", name="test_api")
+     * @Route("/test", name="test_api")
      */
     public function testApi(Request $request): Response
     {
