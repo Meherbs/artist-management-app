@@ -20,4 +20,4 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
       - name: Build
-        run: echo ${{ secrets.TEST_URL }}
+        run: echo ${{ env.TEST_URL }}
