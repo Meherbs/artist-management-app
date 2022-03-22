@@ -1,0 +1,23 @@
+name: CI/CD GESTCOM
+
+on:
+  push:
+    branches: [ testing ]
+
+jobs:
+  job_1:
+    name: Build, Test and Deploye GESTCOM
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-versions: ['7.3.x']
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup PHP, with composer and extensions
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+      - name: Build
+        run: echo ${{ secrets.TEST_URL }}
