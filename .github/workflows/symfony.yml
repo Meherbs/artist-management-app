@@ -2,7 +2,7 @@ name: CI/CD GESTCOM
 
 on:
   push:
-    branches: [ testing ]
+    branches: [ main ]
 
 jobs:
   job_1:
